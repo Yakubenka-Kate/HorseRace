@@ -32,21 +32,18 @@
 
         public Race HorseList(out int count)
         {
-            //Console.WriteLine("Enter count of horses in race");
             Console.WriteLine(Communication.horseCount);
 
             while ((!int.TryParse(Console.ReadLine(), out count)) || count < 5 || count > 15)
             {
-                Console.WriteLine("Incorrect, range mast be between 5 and 15");
+                Console.WriteLine(Communication.incorrect);
                 Console.WriteLine(Communication.horseCount);
             }
-
-            Console.WriteLine("Horse List:");
 
             var newRace = new Race(count);
 
             newRace.NewRace();
-            newRace.PrintTable();
+            newRace.PrintWithResult();
 
             return newRace;
         }
@@ -56,12 +53,12 @@
             int count;
             var betHorse = new Horse[3];
 
-            Console.WriteLine("How many bets do you want to make?(max: 3)");
+            Console.WriteLine(Communication.betCount);
 
             while ((!int.TryParse(Console.ReadLine(), out count)) || count < 0 || count > 3)
             {
-                Console.WriteLine("Incorrect, range mast be between 1 and 3");
-                Console.WriteLine("Enter how many bets you want to make");
+                Console.WriteLine(Communication.incorrect);
+                Console.WriteLine(Communication.betCount);
             }
 
             return count;
@@ -69,15 +66,15 @@
 
         public Horse SelectHorses(Race raceHorses)
         {
-            Console.WriteLine("Enter horse name for bet");
+            Console.WriteLine(Communication.horseName);
             string? name = Console.ReadLine();
 
             bool isHorse = raceHorses.IsHorse(name!, out Horse betHorse);
 
             while (isHorse != true)
             {
-                Console.WriteLine("No horse with this name");
-                Console.WriteLine("Enter horse name for bet");
+                Console.WriteLine(Communication.incorrect);
+                Console.WriteLine(Communication.horseName);
 
                 name = Console.ReadLine();
                 isHorse = raceHorses.IsHorse(name!, out betHorse);
@@ -92,18 +89,20 @@
             double bet;
             int position;
 
-            Console.WriteLine($"Enter bet (Balanсe - {Bet.balance:F2})");
+            Console.WriteLine($"{Communication.bet}{Bet.balance:F2})");
 
             while ((!double.TryParse(Console.ReadLine(), out bet)) || bet < 0 || bet > Bet.balance)
             {
-                Console.WriteLine($"Incorrect. Enter bet (Balanсe - {Bet.balance:F2})");
+                Console.WriteLine(Communication.incorrect);
+                Console.WriteLine($"{Communication.bet} {Bet.balance:F2})");
             }
 
-            Console.WriteLine("Enter the position");
+            Console.WriteLine(Communication.position);
 
             while ((!int.TryParse(Console.ReadLine(), out position)) || position > count || position < 0)
             {
-                Console.WriteLine("Incorrect. Enter the position:");
+                Console.WriteLine(Communication.incorrect);
+                Console.WriteLine(Communication.position);
             }
 
             newBet.UpdateBalance(bet);

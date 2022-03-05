@@ -67,17 +67,10 @@
 
         public void PrintWithResult()
         {
+            var print = new Printer();
             for (int i = 0; i < countHorses; i++)
             {
-                horsesInRace[i].PrintWithResult();
-            }
-        }
-
-        public void PrintTable()
-        {
-            for (int i = 0; i < countHorses; i++)
-            {
-                horsesInRace[i].PrintHorses();
+                print.Print(horsesInRace[i].ToString());
             }
         }
 

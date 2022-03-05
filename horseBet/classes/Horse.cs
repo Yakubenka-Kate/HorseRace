@@ -38,7 +38,7 @@
             horseResult = result;
         }
 
-        public void PrintWithResult()
+        /*public void PrintWithResult()
         {
             Console.WriteLine($"{HorseName,7} {HorseCoef,6:F2}  {HorseResult}");
         }
@@ -46,8 +46,9 @@
         public void PrintHorses()
         {
             Console.WriteLine($"{HorseName,7} {HorseCoef,6:F2}"); // + {HorseResult}
-        }
+        }*/
 
+        public override string ToString() => $"{HorseName,7} {HorseCoef,6}  { HorseResult}";
 
     }
 }

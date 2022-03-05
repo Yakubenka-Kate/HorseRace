@@ -47,5 +47,6 @@ namespace horseBet.classes
                 Console.WriteLine($"{users.Name} - {users.Text}");
             }
         }
+
     }
 }
