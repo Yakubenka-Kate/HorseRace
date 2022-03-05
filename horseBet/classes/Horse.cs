@@ -1,4 +1,4 @@
-﻿namespace horserace.classes
+﻿namespace horseBet.classes
 {
     internal class Horse
     {
@@ -45,7 +45,7 @@
 
         public void PrintHorses()
         {
-            Console.WriteLine($"{HorseName,7} {HorseCoef,6:F2} "); // + {HorseResult}
+            Console.WriteLine($"{HorseName,7} {HorseCoef,6:F2}"); // + {HorseResult}
         }
 
 

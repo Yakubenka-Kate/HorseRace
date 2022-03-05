@@ -1,4 +1,4 @@
-﻿namespace horserace.classes
+﻿namespace horseBet.classes
 {
     internal class Bet
     {

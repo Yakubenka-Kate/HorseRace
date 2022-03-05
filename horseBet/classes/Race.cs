@@ -1,4 +1,4 @@
-﻿namespace horserace.classes
+﻿namespace horseBet.classes
 {
     internal class Race
     {
@@ -24,19 +24,22 @@
 
         private double[] RandomCoef()
         {
-            Random rnd = new Random();
-            double[] coef = new double[countHorses];
+            var rnd = new Random();
+            var coef = new double[countHorses];
+
             for (int i = 0; i < countHorses; i++)
             {
                 coef[i] = Convert.ToDouble(rnd.Next(100, 500) / 100.0);
             }
+
             return coef;
         }
 
         private int[] RandomRes()
         {
-            Random rnd = new Random();
-            int[] x = new int[countHorses];
+            var rnd = new Random();
+            var x = new int[countHorses];
+
             for (int i = 0; i < countHorses; i++)
             {
                 bool contains;
@@ -58,10 +61,11 @@
                 } while (contains);
                 x[i] = next;
             }
+
             return x;
         }
 
-        public void PrintWirhResult()
+        public void PrintWithResult()
         {
             for (int i = 0; i < countHorses; i++)
             {
