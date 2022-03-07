@@ -32,7 +32,7 @@ class Program
                 Environment.Exit(0);
                 break;
             default:
-                Console.WriteLine("Incorrect");
+                Console.WriteLine(Communication.incorrect);
                 break;
         }
     }   

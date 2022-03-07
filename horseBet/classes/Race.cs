@@ -5,7 +5,6 @@
         private int countHorses { get; set; }
         private Horse[] horsesInRace { get; set; } = new Horse[15];
 
-
         public Race(int count)
         {
             countHorses = count;

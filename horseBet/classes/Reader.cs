@@ -8,6 +8,8 @@ namespace horseBet.classes
         private static readonly string folder = Path.Combine(desktopPath, "User");
         private static readonly string file = Path.Combine(folder, "Information.dat");
 
+        public List<User> list { get; set; } = new List<User>();
+
         public void CreateOrWrite(User user)
         {
             DirectoryInfo dirInfo = new DirectoryInfo(folder);
@@ -23,8 +25,6 @@ namespace horseBet.classes
 
         public void ReaderFile()
         {
-            var list = new List<User>();
-
             using StreamReader reader = new StreamReader(file);
                 string? line;
                 while ((line = reader.ReadLine()) != null)
@@ -33,10 +33,10 @@ namespace horseBet.classes
                     list.Add(new User() { Name = words[0], Text = words[1] });
                 }
             
-            SortUsers(list);      
+            SortUsers();      
         }
 
-        private void SortUsers(List<User> list)
+        private void SortUsers()
         {
             var sortedUsers = from user in list
                               orderby Convert.ToDouble(user.Text) descending
@@ -45,8 +45,8 @@ namespace horseBet.classes
             foreach (var users in sortedUsers)
             {
                 Console.WriteLine($"{users.Name} - {users.Text}");
+
             }
         }
-
     }
 }

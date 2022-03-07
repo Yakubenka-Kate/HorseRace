@@ -25,7 +25,7 @@
             double profit = res.Profit(betsCount, bet, betHorses);
             double total = Bet.balance + profit;
 
-            Console.WriteLine($"Balance: {total:F2}");
+            Console.WriteLine($"{Communication.balance}{total:F2}");
 
             GetUser(Convert.ToString(Math.Round(total, 2)));
         }
@@ -113,9 +113,9 @@
 
         public void GetUser(string profit)
         {
-            Console.WriteLine("Enter your name");
+            Console.WriteLine(Communication.userName);
             string? name = Console.ReadLine();
-            var username = new User(name, profit);
+            var username = new User(name!, profit);
 
             var enter = new Reader();
             enter.CreateOrWrite(username);

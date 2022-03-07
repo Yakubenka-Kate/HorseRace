@@ -8,6 +8,8 @@
         public const string betCount = "How many bets do you want to make?(max: 3)";
         public const string horseName = "Enter horse name for bet";
         public const string bet = "Enter bet(Balanсe - ";
+        public const string balance = "Balance: ";
         public const string position = "Enter the position";
+        public const string userName = "Enter your name";
     }
 }
