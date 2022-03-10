@@ -5,48 +5,47 @@ namespace horseBet.classes
     internal class Reader
     {
         private static readonly string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-        private static readonly string folder = Path.Combine(desktopPath, "User");
-        private static readonly string file = Path.Combine(folder, "Information.dat");
+        private static readonly string folder = Path.Combine(desktopPath, folderName);
+        private static readonly string file = Path.Combine(folder, fileName);
 
-        public List<User> list { get; set; } = new List<User>();
+        private const string folderName = "User";
+        private const string fileName = "Information.dat";
+        public IEnumerable<User> SortedUsers { get; set; } = new List<User>();       //?
 
-        public void CreateOrWrite(User user)
+        public static void CreateOrWrite(User user)
         {
-            DirectoryInfo dirInfo = new DirectoryInfo(folder);
+            var dirInfo = new DirectoryInfo(folder);
             if (!dirInfo.Exists)
             {
                 dirInfo.Create();
             }
 
-            using StreamWriter writer = new StreamWriter(file, append: true);         
+            using StreamWriter writer = new StreamWriter(file, append: true);
                 writer.AutoFlush = true;
-                writer.WriteLine(user.Name + " - " + user.Text);           
+                writer.WriteLine(user.Name + " - " + user.Text);
         }
 
-        public void ReaderFile()
+        public void ReadFile()
         {
+            var usersList  = new List<User>();
             using StreamReader reader = new StreamReader(file);
                 string? line;
                 while ((line = reader.ReadLine()) != null)
                 {
                     string[] words = line.Split(new char[] { '-' }, StringSplitOptions.RemoveEmptyEntries);
-                    list.Add(new User() { Name = words[0], Text = words[1] });
+                    usersList.Add(new User() { Name = words[0], Text = words[1] });
                 }
             
-            SortUsers();      
+            SortedUsers =  SortUsers(usersList);
         }
 
-        private void SortUsers()
+        private IEnumerable<User> SortUsers(List<User> usersList)
         {
-            var sortedUsers = from user in list
+            var sortedUsers = from user in usersList
                               orderby Convert.ToDouble(user.Text) descending
                               select user;
 
-            foreach (var users in sortedUsers)
-            {
-                Console.WriteLine($"{users.Name} - {users.Text}");
-
-            }
+            return sortedUsers;
         }
     }
 }

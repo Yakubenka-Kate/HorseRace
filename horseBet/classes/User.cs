@@ -2,30 +2,21 @@
 {
     internal class User
     {
-        private string name;
-        private string text;
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-        public string Text
-        {
-            get { return text; }
-            set { text = value; }
-        }
-
+        public string Name { get; set; }
+        public string Text { get; set; }
         public User()
         {
-            name = "";
-            text = "";
+            Name = "";
+            Text = "";
         }
 
         public User(string name, string text)
         {
-            this.name = name;
-            this.text = text;
-        }     
+            Name = name;
+            Text = text;
+        }
+
+        public override string ToString() => $"{Name} - {Text}";
 
     }
 }

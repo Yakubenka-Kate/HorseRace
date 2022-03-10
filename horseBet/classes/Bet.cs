@@ -3,32 +3,20 @@
     internal class Bet
     {
         public static double balance;
-        private double rate;
-        private int position;
-
-        public double Rate
-        {
-            get { return rate; }
-            set { rate = value; }
-        }
-
-        public int Position
-        {
-            get { return position; }
-            set { position = value; }
-        }
+        public double Rate { get; set; }
+        public int Position { get; set; }
 
         public Bet()
         {
-            UpdateBalance(rate);
-            rate = 0;
-            position = 0;
+            UpdateBalance(Rate);
+            Rate = 0;
+            Position = 0;
         }
 
         public Bet(double bet, int position)
         {
-            this.rate = bet;
-            this.position = position;
+            Rate = bet;
+            Position = position;
         }
 
         public void UpdateBalance(double bet)
@@ -50,7 +38,5 @@
 
             return profit;
         }
-
-
     }
 }

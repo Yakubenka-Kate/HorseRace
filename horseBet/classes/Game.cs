@@ -20,17 +20,17 @@
                 bet[i] = BetsAndPosition(count);
             }
 
-            raceHorses.PrintWithResult();
+            raceHorses.PrintHorsesWithResult();         
 
             double profit = res.Profit(betsCount, bet, betHorses);
             double total = Bet.balance + profit;
 
-            Console.WriteLine($"{Communication.balance}{total:F2}");
+            Console.WriteLine($"{Communication.balance}{total:F2}"); 
 
             GetUser(Convert.ToString(Math.Round(total, 2)));
         }
 
-        public Race HorseList(out int count)
+        public RaceConsole HorseList(out int count)                                                 //Race HorseList
         {
             Console.WriteLine(Communication.horseCount);
 
@@ -40,18 +40,18 @@
                 Console.WriteLine(Communication.horseCount);
             }
 
-            var newRace = new Race(count);
+            var newRace = new RaceConsole(count);                                                   //Race(count)
 
             newRace.NewRace();
-            newRace.PrintWithResult();
+
+            newRace.PrintHorses();
 
             return newRace;
         }
 
         public int BetsCount(Race raceHorses)
         {
-            int count;
-            var betHorse = new Horse[3];
+            int count;    
 
             Console.WriteLine(Communication.betCount);
 
@@ -69,7 +69,7 @@
             Console.WriteLine(Communication.horseName);
             string? name = Console.ReadLine();
 
-            bool isHorse = raceHorses.IsHorse(name!, out Horse betHorse);
+            bool isHorse = raceHorses.IsHorse(name!, out Horse? betHorse);          
 
             while (isHorse != true)
             {
@@ -116,15 +116,14 @@
             Console.WriteLine(Communication.userName);
             string? name = Console.ReadLine();
             var username = new User(name!, profit);
-
-            var enter = new Reader();
-            enter.CreateOrWrite(username);
+            Reader.CreateOrWrite(username);
         }
 
         public void GetUserInfo()
         {
-            var info = new Reader();
-            info.ReaderFile();
+            var info = new UserConsole();                               //Reader
+            info.ReadFile();
+            info.PrintUsers();
         }
     }
 }
