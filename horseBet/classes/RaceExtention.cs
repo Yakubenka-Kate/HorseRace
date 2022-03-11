@@ -1,5 +1,8 @@
 ﻿namespace horseBet.classes
 {
+    /// <summary>
+    /// Checking the existence of a horse in a race
+    /// </summary>
     internal static class RaceExtention
     {
         public static bool IsHorse(this Race horses, string name, out Horse? horse)

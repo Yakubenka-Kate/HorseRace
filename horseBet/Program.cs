@@ -1,4 +1,7 @@
 ﻿using horseBet.classes;
+/// <summary>
+/// Starting the gameplay
+/// </summary>
 class Program
 {
     static void Main(string[] args)

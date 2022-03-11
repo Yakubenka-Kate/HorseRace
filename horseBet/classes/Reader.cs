@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
-
-namespace horseBet.classes
+﻿namespace horseBet.classes
 {
+    /// <summary>
+    /// Reading and writing information  about the user's game results
+    /// </summary>
     internal class Reader
     {
         private static readonly string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
@@ -20,7 +21,7 @@ namespace horseBet.classes
                 dirInfo.Create();
             }
 
-            using StreamWriter writer = new StreamWriter(file, append: true);
+            using var writer = new StreamWriter(file, append: true);
                 writer.AutoFlush = true;
                 writer.WriteLine(user.Name + " - " + user.Text);
         }
@@ -28,7 +29,7 @@ namespace horseBet.classes
         public void ReadFile()
         {
             var usersList  = new List<User>();
-            using StreamReader reader = new StreamReader(file);
+            using var reader = new StreamReader(file);
                 string? line;
                 while ((line = reader.ReadLine()) != null)
                 {

@@ -1,5 +1,8 @@
 ﻿namespace horseBet.classes
 {
+    /// <summary>
+    /// Сontains constants for user interaction
+    /// </summary>
     internal class Communication
     {
         public const string menu = "1. Make bet\n2. Users info\n0. Exit";

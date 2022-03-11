@@ -1,9 +1,20 @@
 ﻿namespace horseBet.classes
 {
+    /// <summary>
+    /// A bet in the race
+    /// </summary>
     internal class Bet
     {
         public static double balance;
+
+        /// <summary>
+        /// The size of the player's bet on the horse
+        /// </summary>
         public double Rate { get; set; }
+
+        /// <summary>
+        /// The player's intended finishing position of the horse in the race
+        /// </summary>
         public int Position { get; set; }
 
         public Bet()

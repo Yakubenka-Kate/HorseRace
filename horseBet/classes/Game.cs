@@ -1,5 +1,8 @@
 ﻿namespace horseBet.classes
 {
+    /// <summary>
+    /// Implements the gameplay for the race
+    /// </summary>
     internal class Game
     {
         private const double startBalance = 500.00;

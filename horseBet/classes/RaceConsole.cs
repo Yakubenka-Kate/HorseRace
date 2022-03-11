@@ -1,5 +1,8 @@
 ﻿namespace horseBet.classes
 {
+    /// <summary>
+    /// Output of the generated race
+    /// </summary>
     internal class RaceConsole : Race
     {
         public RaceConsole(int count) : base(count) { }
