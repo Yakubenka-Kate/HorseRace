@@ -32,7 +32,7 @@ namespace horseBet
         {
             for (int i = 0; i < HorsesInRace.Length; i++)
             {
-                Console.WriteLine(HorsesInRace[i]);
+                Printer.Print(HorsesInRace[i]);
             }
         }
 
@@ -40,7 +40,7 @@ namespace horseBet
         {
             for (int i = 0; i < HorsesInRace.Length; i++)
             {
-                Console.WriteLine($"{HorsesInRace[i].Substring(0, 14)}");
+                Printer.Print($"{HorsesInRace[i].Substring(0, 14)}");
             }
         }
     }

@@ -16,8 +16,7 @@
 
             Console.WriteLine();
             raceHorses.PrintHorsesWithResult();
-
-            Console.WriteLine(bet.GetProfit(bet.Balance()));
+            Console.WriteLine(Math.Round(bet.GetProfit(bet.Balance()), 2));
 
             SetUser(bet.GetProfit(bet.Balance()));
         }
@@ -83,7 +82,7 @@
                 while ((!double.TryParse(Console.ReadLine(), out rate)) || rate < 0 || rate > bet.Balance())
                 {
                     Console.WriteLine(Communication.incorrect);
-                    Console.WriteLine($"{Communication.bet}{bet.Balance})");
+                    Console.WriteLine($"{Communication.bet}{bet.Balance():F2})");
                 }
 
                 Console.WriteLine(Communication.position);

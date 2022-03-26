@@ -40,9 +40,10 @@ namespace horseBet
         public void PrintBet()
         {
             string[] betsInfo = MakeBet.BetsForPrint();
+
             for (int i = 0; i < betsInfo.Length; i++)
             {
-                Console.WriteLine(betsInfo[i]);
+                Printer.Print(betsInfo[i]);
             }
         }
     }
