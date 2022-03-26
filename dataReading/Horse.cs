@@ -1,4 +1,4 @@
-﻿namespace horseBet.classes
+﻿namespace dataReading
 {
     /// <summary>
     /// Horses in the race
@@ -27,7 +27,7 @@
             HorseResult = result;
         }
 
-        public override string ToString() => $"{HorseName,7} {HorseCoef,6}  { HorseResult}";
+        public override string ToString() => $"{HorseName,7} {HorseCoef,6}  {HorseResult}";
 
     }
 }

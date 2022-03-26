@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "horseBet", "horseBet\horseBet.csproj", "{C2014ED2-BC3E-4C0B-9B34-A00C520BC47F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "horseBet", "horseBet\horseBet.csproj", "{C2014ED2-BC3E-4C0B-9B34-A00C520BC47F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dataReading", "dataReading\dataReading.csproj", "{9906A8CF-D430-4613-BD0F-E36D6193CA77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "processing", "processing\processing.csproj", "{0D51F128-B495-4CC9-8499-724E60DF3609}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{C2014ED2-BC3E-4C0B-9B34-A00C520BC47F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2014ED2-BC3E-4C0B-9B34-A00C520BC47F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2014ED2-BC3E-4C0B-9B34-A00C520BC47F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9906A8CF-D430-4613-BD0F-E36D6193CA77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9906A8CF-D430-4613-BD0F-E36D6193CA77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9906A8CF-D430-4613-BD0F-E36D6193CA77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9906A8CF-D430-4613-BD0F-E36D6193CA77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D51F128-B495-4CC9-8499-724E60DF3609}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D51F128-B495-4CC9-8499-724E60DF3609}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D51F128-B495-4CC9-8499-724E60DF3609}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D51F128-B495-4CC9-8499-724E60DF3609}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

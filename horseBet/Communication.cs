@@ -1,4 +1,4 @@
-﻿namespace horseBet.classes
+﻿namespace horseBet
 {
     /// <summary>
     /// Сontains constants for user interaction

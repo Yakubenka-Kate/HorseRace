@@ -1,9 +1,11 @@
-﻿using horseBet.classes;
+﻿using horseBet;
+
 /// <summary>
 /// Starting the gameplay
 /// </summary>
 class Program
 {
+
     static void Main(string[] args)
     {
         Menu();
@@ -11,8 +13,6 @@ class Program
 
     static void Menu()
     {
-        var game = new Game();
-
         Console.WriteLine(Communication.menu);
 
         int i;
@@ -24,11 +24,11 @@ class Program
         switch (i)
         {
             case 1:
-                game.MakeBets();
+                Game.StartGame();
                 Menu();
                 break;
             case 2:
-                game.GetUserInfo();
+                Game.GetUsersInfo();
                 Menu();
                 break;
             case 0:
@@ -38,5 +38,5 @@ class Program
                 Console.WriteLine(Communication.incorrect);
                 break;
         }
-    }   
+    }
 }

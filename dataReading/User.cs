@@ -1,12 +1,20 @@
-﻿namespace horseBet.classes 
+﻿namespace dataReading
 {
     /// <summary>
     /// Player Information
     /// </summary>
     internal class User
     {
+        /// <summary>
+        /// Username
+        /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// Earned points in the game
+        /// </summary>
         public string Text { get; set; }
+
         public User()
         {
             Name = "";
@@ -23,3 +31,4 @@
 
     }
 }
+
