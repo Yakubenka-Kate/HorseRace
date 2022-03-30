@@ -20,10 +20,9 @@ namespace horseBet
 
         public static void PrintUsers()
         {
-            SortUsers.SortUsersFromReader();
-            foreach (var users in SortUsers.SortedUsers)
+            foreach (var users in SortUsers.SortUsersFromReader())
             {
-                Printer.Print(users.ToString());
+                Printer.Print(users);
             }
         }
     }

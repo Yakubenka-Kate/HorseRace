@@ -20,6 +20,13 @@
         /// </summary>
         public int HorseResult { get; set; }
 
+        public Horse()
+        {
+            HorseCoef = 0;
+            HorseResult = 0;
+            HorseName = "";
+        }
+
         public Horse(string name, double coef, int result)
         {
             HorseName = name;
@@ -27,7 +34,7 @@
             HorseResult = result;
         }
 
-        public override string ToString() => $"{HorseName,7} {HorseCoef,6}  {HorseResult}";
+        public override string ToString() => $"{HorseName,4} {HorseCoef,6}  {HorseResult}";
 
     }
 }

@@ -13,10 +13,13 @@
         /// <summary>
         /// Horses in the race
         /// </summary>
-        public Horse[] HorsesInRace { get; set; } = new Horse[15];
+        public Horse[] HorsesInRace { get; set; } 
 
-
-        public Race(int count) => CountHorses = count;
+        public Race(int count)
+        {
+            CountHorses = count;
+            HorsesInRace = new Horse[count];
+        }
 
     }
 }

@@ -48,11 +48,25 @@ namespace processing
         public string[] BetsForPrint()
         {
             string[] bets = new string[CountBets];
+            string[] result = new string[CountBets];
 
             for (int i = 0; i < CountBets; i++)
             {
-                bets[i] = $"{GenerateBets[i].BetHorse.HorseName} {GenerateBets[i].BetHorse.HorseCoef} -- " +
-                          $"{GenerateBets[i].Rate} {GenerateBets[i].Position}";
+                if (GenerateBets[i].BetHorse.HorseResult == GenerateBets[i].Position)
+                {
+                    result[i] = "Win";
+                }
+                else
+                {
+                    result[i] = "Lose";
+                }
+            }
+
+            for (int i = 0; i < CountBets; i++)
+            {
+                bets[i] = $"{GenerateBets[i].BetHorse.HorseName,4} {GenerateBets[i].BetHorse.HorseCoef} " +
+                          $"{GenerateBets[i].BetHorse.HorseResult} {GenerateBets[i].Rate} {GenerateBets[i].Position} " +
+                          $"{result[i]}";
             }
 
             return bets;

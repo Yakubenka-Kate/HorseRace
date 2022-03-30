@@ -5,7 +5,9 @@
     /// </summary>
     internal class Communication
     {
-        public const string menu = "1. Make bet\n2. Users info\n0. Exit";
+        public const string menu = "1. Make bet\n2. Users info\n3. Reports\n0. Exit";
+        public const string subMenu = "1. Create report\n0. Exit";
+        public const string reportMenu = "1. All\n2. User in race\n0. Exit";
         public const string horseCount = "Enter count of horses in race (5 - 15)";
         public const string incorrect = "Incorrect";
         public const string betCount = "How many bets do you want to make?(max: 3)";

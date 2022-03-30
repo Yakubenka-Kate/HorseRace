@@ -37,14 +37,10 @@ namespace horseBet
             return balance + MakeBet.Profit();
         }
 
-        public void PrintBet()
+        public string[] BetsForReport()
         {
-            string[] betsInfo = MakeBet.BetsForPrint();
-
-            for (int i = 0; i < betsInfo.Length; i++)
-            {
-                Printer.Print(betsInfo[i]);
-            }
+            return MakeBet.BetsForPrint();
         }
+
     }
 }

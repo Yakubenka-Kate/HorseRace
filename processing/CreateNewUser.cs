@@ -15,7 +15,7 @@ namespace processing
         public void AddUser(string name, string profit)
         {
             User = new User(name, profit);
-            Reader.CreateOrWrite(User);
+            ReaderUsers.CreateOrWrite(User);
         }
 
         public override string ToString()

@@ -1,4 +1,8 @@
-﻿namespace horseBet
+﻿//using processing;
+
+using processing;
+
+namespace horseBet
 {
     /// <summary>
     /// Implements the gameplay for the race
@@ -10,15 +14,19 @@
         public static void StartGame()
         {
             var raceHorses = CreateRace(out int countHorsesInRace);
+
             int countBets = BetsCount();
 
-            BetConsole bet = CreateBet(countHorsesInRace, countBets, raceHorses);
+            var bet = CreateBet(countHorsesInRace, countBets, raceHorses);
 
-            Console.WriteLine();
             raceHorses.PrintHorsesWithResult();
             Console.WriteLine(Math.Round(bet.GetProfit(bet.Balance()), 2));
 
-            SetUser(bet.GetProfit(bet.Balance()));
+            string name = SetUser(bet.GetProfit(bet.Balance()));
+
+            CreateReport.AddRaceInFile(raceHorses.HorsesForReport(), name, bet.BetsForReport());
+
+            Program.SubMenu(name!, bet.BetsForReport());
         }
 
         public static RaceConsole CreateRace(out int countHorsesInRace)
@@ -34,7 +42,6 @@
 
             race.GetRace(countHorsesInRace);
             race.PrintHorsesWithoutResul();
-            //race.PrintHorsesWithResult();
 
             return race;
         }
@@ -96,22 +103,23 @@
                 bet.SendBet(raceHorses, name!, rate, position);
             }
 
-            bet.PrintBet();
-
             return bet;
         }
 
-        public static void SetUser(double profit)
+        public static string SetUser(double profit)
         {
             Console.WriteLine(Communication.userName);
             string? name = Console.ReadLine();
             var user = new UserConsole();
             user.AddNewUser(name!, profit.ToString());
+
+            return name!;
         }
 
         public static void GetUsersInfo()
         {
             UserConsole.PrintUsers();
         }
+
     }
 }

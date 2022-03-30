@@ -3,7 +3,7 @@
     /// <summary>
     /// Reading and writing information about the user's game results
     /// </summary>
-    internal static class Reader
+    internal static class ReaderUsers
     {
         private static readonly string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
         private static readonly string folder = Path.Combine(desktopPath, folderName);
@@ -29,15 +29,25 @@
         {
             var usersList = new List<User>();
 
-            using var reader = new StreamReader(file);
-            string? line;
-            while ((line = reader.ReadLine()) != null)
+            var dirInfo = new DirectoryInfo(folder);
+            if (!dirInfo.Exists)
             {
-                string[] words = line.Split(new char[] { '-' }, StringSplitOptions.RemoveEmptyEntries);
-                usersList.Add(new User() { Name = words[0], Text = words[1] });
+                return null;
+            }
+            else
+            {
+                using var reader = new StreamReader(file);
+                string? line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    string[] words = line.Split(new char[] { '-' }, StringSplitOptions.RemoveEmptyEntries);
+                    usersList.Add(new User() { Name = words[0], Text = words[1] });
+                }
+
+                return usersList;
             }
 
-            return usersList;
+            
         }
     }
 }

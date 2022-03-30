@@ -7,15 +7,23 @@ namespace processing
     /// </summary>
     internal static class SortUsers
     {
-        public static IEnumerable<User> SortedUsers { get; set; } = new List<User>();
-
-        public static void SortUsersFromReader()
+        public static string[] SortUsersFromReader()
         {
-            List<User>? usersFromFile = Reader.ReadFile();
+            var usersFromFile = ReaderUsers.ReadFile();
+            IEnumerable<User> SortedUsers = new List<User>();
 
-            SortedUsers = from user in usersFromFile
-                          orderby Convert.ToDouble(user.Text) descending
-                          select user;
+            if (usersFromFile != null)
+            {
+                SortedUsers = from user in usersFromFile
+                              orderby Convert.ToDouble(user.Text) descending
+                              select user;
+            }
+            else
+            {
+                Console.WriteLine("Empty");
+            }
+
+            return SortedUsers.Select(n => n.ToString()).ToArray();
         }
     }
 }

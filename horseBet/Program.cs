@@ -1,4 +1,5 @@
 ﻿using horseBet;
+using processing;
 
 /// <summary>
 /// Starting the gameplay
@@ -11,7 +12,7 @@ class Program
         Menu();
     }
 
-    static void Menu()
+    public static void Menu()
     {
         Console.WriteLine(Communication.menu);
 
@@ -31,6 +32,9 @@ class Program
                 Game.GetUsersInfo();
                 Menu();
                 break;
+            case 3:
+                ReportMenu();
+                break;
             case 0:
                 Environment.Exit(0);
                 break;
@@ -39,4 +43,59 @@ class Program
                 break;
         }
     }
+
+    public static void SubMenu(string name, string[] bet)
+    {
+        Console.WriteLine(Communication.subMenu);
+
+        int i;
+        while (!int.TryParse(Console.ReadLine(), out i))
+        {
+            Console.WriteLine(Communication.subMenu);
+        }
+
+        switch (i)
+        {
+            case 1:
+                CreateReport.CreateNewExcel(name!, bet);
+                Program.Menu();
+                break;
+            case 0:
+                Program.Menu();
+                break;
+            default:
+                Console.WriteLine(Communication.incorrect);
+                break;
+        }
+    }
+
+    public static void ReportMenu()
+    {
+        Console.WriteLine(Communication.reportMenu);
+
+        int i;
+        while (!int.TryParse(Console.ReadLine(), out i))
+        {
+            Console.WriteLine(Communication.reportMenu);
+        }
+
+        switch (i)
+        {
+            case 1:
+                CreateReport.ReadAllRaces();
+                Menu();
+                break;
+            case 2:
+                CreateReport.ReadUsersInRace();
+                Menu();
+                break;
+            case 0:
+                Program.Menu();
+                break;
+            default:
+                Console.WriteLine(Communication.incorrect);
+                break;
+        }
+    }
+
 }
