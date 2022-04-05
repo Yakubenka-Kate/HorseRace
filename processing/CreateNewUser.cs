@@ -18,9 +18,5 @@ namespace processing
             ReaderUsers.CreateOrWrite(User);
         }
 
-        public override string ToString()
-        {
-            return $"{User!.Name} {User.Text}";
-        }
     }
 }

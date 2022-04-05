@@ -71,6 +71,8 @@ class Program
 
     public static void ReportMenu()
     {
+        string name;
+
         Console.WriteLine(Communication.reportMenu);
 
         int i;
@@ -86,7 +88,15 @@ class Program
                 Menu();
                 break;
             case 2:
-                CreateReport.ReadUsersInRace();
+                Console.WriteLine("Enter name");
+                name = Console.ReadLine();
+                CreateReport.ReadUsersInRace(name!);
+                Menu();
+                break;
+            case 3:
+                Console.WriteLine("Enter name");
+                name = Console.ReadLine();
+                CreateReport.ReadHorsesInRace(name!);
                 Menu();
                 break;
             case 0:

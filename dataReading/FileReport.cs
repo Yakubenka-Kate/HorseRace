@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Text.RegularExpressions;
 
 namespace dataReading
 {
@@ -12,6 +11,8 @@ namespace dataReading
         private const string folderName = "User";
         private const string fileName = "Race.dat";
 
+        public ArrayList ListInfo { get; set; } = new ArrayList();
+
         public static void AddNewRace(string[] race, string name, string[] bet)
         {
             var dirInfo = new DirectoryInfo(folder);
@@ -22,7 +23,7 @@ namespace dataReading
 
             using var writer = new StreamWriter(file, append: true);
             writer.AutoFlush = true;
-            writer.WriteLine($"--Race{name}--");
+            writer.WriteLine(name);
 
             for (int i = 0; i < race.Length; i++)
             {
@@ -32,14 +33,13 @@ namespace dataReading
                     string[] words = bet[j].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                     if (race[i].Substring(0, 4) == bet[j].Substring(0, 4))
                     {
-                        writer.Write(" " + name + " " + words[5]);
+                        writer.Write(" " + words[5]);
                         break;
                     }
                 }
                 writer.Write("\n");
             }
             writer.WriteLine("/");
-
         }
 
         public static void ReadRaces()
@@ -60,23 +60,70 @@ namespace dataReading
             }
         }
 
-        public static void ReadUserRaces()
+        public void ReadRacesForUser(string name)
         {
-            var listFile = new ArrayList();
-
             using var reader = new StreamReader(file);
             string? line;
+
             while ((line = reader.ReadLine()) != null)
             {
+                if (line != name)
+                {
+                    continue;
+                }
+                while ((line = reader.ReadLine()) != "/")
+                {
+                    string[] words = line.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+                    if (words.Length > 3)
+                    {
+                        ListInfo.Add(new FileInfo()
+                        {
+                            HorseNameFile = words[0],
+                            HorseCoefFile = words[1],
+                            HorsePositionFile = words[2],
+                            UserResultFile = words[3]
+                        });
+                    }
+                    else
+                    {
+                        ListInfo.Add(new FileInfo
+                        {
+                            HorseNameFile = words[0],
+                            HorseCoefFile = words[1],
+                            HorsePositionFile = words[2]
+                        });
+                    }
+                }
                 
             }
+        }
 
-            foreach (object o in listFile)
+        public void PrintResult()
+        {
+            foreach (FileInfo o in ListInfo)
             {
-                Console.WriteLine(o);
+                Console.WriteLine(o.HorseNameFile + " " + o.HorseCoefFile + " " + o.HorsePositionFile +
+                    " " + o.UserResultFile);
             }
+        }
 
+        public void ReadHorsesForUser(string name)
+        {
+            ReadRacesForUser(name);
+
+            var horses = from FileInfo file in ListInfo
+                         where file.UserResultFile == "Win" || 
+                               file.UserResultFile == "Lose" 
+                         select file;
+
+            foreach (var o in horses)
+            {
+                Console.WriteLine(o.HorseNameFile);
+            }
         }
 
     }
 }
+
+

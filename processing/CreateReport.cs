@@ -19,9 +19,18 @@ namespace processing
             FileReport.ReadRaces();
         }
 
-        public static void ReadUsersInRace()
+        public static void ReadUsersInRace(string name)
         {
-            FileReport.ReadUserRaces();
+            var report = new FileReport();
+            report.ReadRacesForUser(name);
+            report.PrintResult();
         }
+
+        public static void ReadHorsesInRace(string name)
+        {
+            var report = new FileReport();
+            report.ReadHorsesForUser(name);
+        }
+
     }
 }
