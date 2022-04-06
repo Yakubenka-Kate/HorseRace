@@ -1,4 +1,5 @@
 ﻿using processing;
+using System.Collections;
 
 namespace horseBet
 {
@@ -22,18 +23,17 @@ namespace horseBet
             return MakeRace.IsHorse(name);
         }
 
-        public string[] HorsesForReport()
+        public IEnumerable HorsesForReport()
         {
             return SortHorses.SortHorsesInRace(MakeRace);
         }
 
         public void PrintHorsesWithResult()
         {
-            string[] horses = SortHorses.SortHorsesInRace(MakeRace);
+            var horses = SortHorses.SortHorsesInRace(MakeRace);
 
-            for (int i = 0; i < horses.Length; i++)
-            {
-                Printer.Print(horses[i]);
+            foreach (var o in horses) {
+                Printer.Print(o.ToString());
             }
         }
 
@@ -41,9 +41,9 @@ namespace horseBet
         {
             string[] horses = MakeRace.NewRace();
 
-            for (int i = 0; i < horses.Length; i++)
+            foreach(var h in horses)
             {
-                Printer.Print($"{horses[i].Substring(0, 12)}");
+                Printer.Print($"{h[..12]}");
             }
         }
     }

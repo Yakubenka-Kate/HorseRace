@@ -24,7 +24,7 @@
         {
             HorseCoef = 0;
             HorseResult = 0;
-            HorseName = "";
+            HorseName = string.Empty;
         }
 
         public Horse(string name, double coef, int result)
@@ -34,7 +34,7 @@
             HorseResult = result;
         }
 
-        public override string ToString() => $"{HorseName,4} {HorseCoef,6}  {HorseResult}";
+        public override string ToString() => $"{HorseName} {HorseCoef,6}  {HorseResult}";
 
     }
 }

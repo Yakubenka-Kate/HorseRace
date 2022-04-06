@@ -1,4 +1,5 @@
 ﻿using processing;
+using System.Collections;
 
 namespace horseBet
 {
@@ -37,7 +38,7 @@ namespace horseBet
             return balance + MakeBet.Profit();
         }
 
-        public string[] BetsForReport()
+        public IEnumerable BetsForReport()
         {
             return MakeBet.BetsForPrint();
         }

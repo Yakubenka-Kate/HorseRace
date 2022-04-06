@@ -34,7 +34,7 @@ namespace horseBet
             var race = new RaceConsole();
 
             Console.WriteLine(Communication.horseCount);
-            while ((!int.TryParse(Console.ReadLine(), out countHorsesInRace)) || countHorsesInRace < 5 || countHorsesInRace > 15)
+            while (!int.TryParse(Console.ReadLine(), out countHorsesInRace) || countHorsesInRace < 5 || countHorsesInRace > 15)
             {
                 Console.WriteLine(Communication.incorrect);
                 Console.WriteLine(Communication.horseCount);
@@ -52,7 +52,7 @@ namespace horseBet
 
             Console.WriteLine(Communication.betCount);
 
-            while ((!int.TryParse(Console.ReadLine(), out count)) || count < 0 || count > 3)
+            while (!int.TryParse(Console.ReadLine(), out count) || count < 0 || count > 3)
             {
                 Console.WriteLine(Communication.incorrect);
                 Console.WriteLine(Communication.betCount);
@@ -86,7 +86,7 @@ namespace horseBet
 
                 Console.WriteLine($"{Communication.bet}{bet.Balance():F2})");
 
-                while ((!double.TryParse(Console.ReadLine(), out rate)) || rate < 0 || rate > bet.Balance())
+                while (!double.TryParse(Console.ReadLine(), out rate) || rate < 0 || rate > bet.Balance())
                 {
                     Console.WriteLine(Communication.incorrect);
                     Console.WriteLine($"{Communication.bet}{bet.Balance():F2})");
@@ -94,7 +94,7 @@ namespace horseBet
 
                 Console.WriteLine(Communication.position);
 
-                while ((!int.TryParse(Console.ReadLine(), out position)) || position > countHorsesInRace || position < 0)
+                while (!int.TryParse(Console.ReadLine(), out position) || position > countHorsesInRace || position < 0)
                 {
                     Console.WriteLine(Communication.incorrect);
                     Console.WriteLine(Communication.position);

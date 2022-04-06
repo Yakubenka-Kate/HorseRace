@@ -10,10 +10,10 @@ namespace dataReading
 
         public FileInfo()
         {
-            HorseNameFile = "";
-            HorseCoefFile = "";
-            HorsePositionFile = "";
-            UserResultFile = "";
+            HorseNameFile = string.Empty;
+            HorseCoefFile = string.Empty;
+            HorsePositionFile = string.Empty;
+            UserResultFile = string.Empty;
         }
 
         public override string ToString()

@@ -1,5 +1,6 @@
 ﻿using horseBet;
 using processing;
+using System.Collections;
 
 /// <summary>
 /// Starting the gameplay
@@ -44,7 +45,7 @@ class Program
         }
     }
 
-    public static void SubMenu(string name, string[] bet)
+    public static void SubMenu(string name, IEnumerable bet)
     {
         Console.WriteLine(Communication.subMenu);
 

@@ -17,8 +17,8 @@
 
         public User()
         {
-            Name = "";
-            Text = "";
+            Name = string.Empty;
+            Text = string.Empty;
         }
 
         public User(string name, string text)

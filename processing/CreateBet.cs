@@ -1,4 +1,5 @@
 ﻿using dataReading;
+using System.Collections;
 
 namespace processing
 {
@@ -45,32 +46,59 @@ namespace processing
             UpdateBalance(rate);
         }
 
-        public string[] BetsForPrint()
+        public IEnumerable BetsForPrint()
         {
-            string[] bets = new string[CountBets];
+            var bets = new List<string>();
             string[] result = new string[CountBets];
 
             for (int i = 0; i < CountBets; i++)
             {
                 if (GenerateBets[i].BetHorse.HorseResult == GenerateBets[i].Position)
-                {
                     result[i] = "Win";
-                }
                 else
-                {
                     result[i] = "Lose";
-                }
             }
 
             for (int i = 0; i < CountBets; i++)
             {
-                bets[i] = $"{GenerateBets[i].BetHorse.HorseName,4} {GenerateBets[i].BetHorse.HorseCoef} " +
-                          $"{GenerateBets[i].BetHorse.HorseResult} {GenerateBets[i].Rate} {GenerateBets[i].Position} " +
-                          $"{result[i]}";
+                bets.Add($"{GenerateBets[i].BetHorse.HorseName} " +
+                    $"{ GenerateBets[i].BetHorse.HorseCoef} " +
+                    $"{ GenerateBets[i].BetHorse.HorseResult} " +
+                    $"{ GenerateBets[i].Rate} " +
+                    $"{ GenerateBets[i].Position} " +
+                    $"{ result[i] } "
+                );
             }
 
             return bets;
         }
+
+        //public string[] BetsForPrint()
+        //{
+        //    string[] bets = new string[CountBets];
+        //    string[] result = new string[CountBets];
+
+        //    for (int i = 0; i < CountBets; i++)
+        //    {
+        //        if (GenerateBets[i].BetHorse.HorseResult == GenerateBets[i].Position)
+        //        {
+        //            result[i] = "Win";
+        //        }
+        //        else
+        //        {
+        //            result[i] = "Lose";
+        //        }
+        //    }
+
+        //    for (int i = 0; i < CountBets; i++)
+        //    {
+        //        bets[i] = $"{GenerateBets[i].BetHorse.HorseName,4} {GenerateBets[i].BetHorse.HorseCoef} " +
+        //                  $"{GenerateBets[i].BetHorse.HorseResult} {GenerateBets[i].Rate} {GenerateBets[i].Position} " +
+        //                  $"{result[i]}";
+        //    }
+
+        //    return bets;
+        //}
 
         public double Profit()
         {

@@ -1,4 +1,5 @@
 ﻿using dataReading;
+using System.Collections;
 
 namespace processing
 {
@@ -7,23 +8,18 @@ namespace processing
     /// </summary>
     internal static class SortUsers
     {
-        public static string[] SortUsersFromReader()
+        public static IEnumerable SortUsersFromReader()
         {
-            var usersFromFile = ReaderUsers.ReadFile();
-            IEnumerable<User> SortedUsers = new List<User>();
+            var SortedUsers = ReaderUsers.ReadFile()
+                 .Select(user => new User()
+                 {
+                     Name = user.Name,
+                     Text = user.Text,
+                 })
+                 .OrderByDescending(user => user.Text)
+                 .Select(user => user.ToString());
 
-            if (usersFromFile != null)
-            {
-                SortedUsers = from user in usersFromFile
-                              orderby Convert.ToDouble(user.Text) descending
-                              select user;
-            }
-            else
-            {
-                Console.WriteLine("Empty");
-            }
-
-            return SortedUsers.Select(n => n.ToString()).ToArray();
+            return SortedUsers;
         }
     }
 }

@@ -22,7 +22,7 @@ namespace horseBet
         {
             foreach (var users in SortUsers.SortUsersFromReader())
             {
-                Printer.Print(users);
+                Printer.Print(users.ToString());
             }
         }
     }

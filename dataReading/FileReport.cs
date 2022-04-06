@@ -13,7 +13,7 @@ namespace dataReading
 
         public ArrayList ListInfo { get; set; } = new ArrayList();
 
-        public static void AddNewRace(string[] race, string name, string[] bet)
+        public static void AddNewRace(IEnumerable race, string name, IEnumerable bet)
         {
             var dirInfo = new DirectoryInfo(folder);
             if (!dirInfo.Exists)
@@ -24,14 +24,13 @@ namespace dataReading
             using var writer = new StreamWriter(file, append: true);
             writer.AutoFlush = true;
             writer.WriteLine(name);
-
-            for (int i = 0; i < race.Length; i++)
+            foreach(var r in race)
             {
-                writer.Write(race[i]);
-                for (int j = 0; j < bet.Length; j++)
+                writer.Write(r.ToString());
+                foreach(var b in bet)
                 {
-                    string[] words = bet[j].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                    if (race[i].Substring(0, 4) == bet[j].Substring(0, 4))
+                    string[] words = b.ToString().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                    if (r.ToString().Substring(0, 4) == b.ToString().Substring(0, 4))
                     {
                         writer.Write(" " + words[5]);
                         break;
